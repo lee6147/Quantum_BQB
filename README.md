@@ -1,12 +1,18 @@
-# ⚛️ BQB(Buried Quantum Barrier) 초보자 가이드
+<div align="center">
+
+![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=700&size=28&pause=1000&color=6C63FF&center=true&vCenter=true&width=600&lines=%E2%9A%9B%EF%B8%8F+BQB+%EC%B4%88%EB%B3%B4%EC%9E%90+%EA%B0%80%EC%9D%B4%EB%93%9C;Buried+Quantum+Barrier;%EB%A7%A4%EB%A6%BD%EB%90%9C+%EC%96%91%EC%9E%90+%EC%9E%A5%EB%B2%BD)
+
+<img src="https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png" alt="line" width="100%">
+
+</div>
 
 > **반도체 큐비트 대규모 배열의 핵심 기술을, 비유로 이해하기**
 >
 > 이 문서는 BQB의 개념과 원리를 양자컴퓨팅 배경지식이 없는 사람도 이해할 수 있도록 작성되었습니다.
 
----
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-## 📖 목차
+## <img src="https://media.giphy.com/media/WUlplcMpOCEmTGBtBW/giphy.gif" width="30"> 목차
 
 | 순서 | 주제 | 핵심 질문 |
 |:---:|------|----------|
@@ -20,9 +26,11 @@
 
 ---
 
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
+
 ## 0. ⚛️ 큐비트란?
 
-### 비트 vs 큐비트
+### <img src="https://media.giphy.com/media/VgCDAzcKvsR6OM0uWg/giphy.gif" width="25"> 비트 vs 큐비트
 
 일반 컴퓨터는 **비트(bit)** 를 씁니다. 비트는 `0` 또는 `1`, 둘 중 하나입니다.
 
@@ -33,7 +41,7 @@
 큐비트:    ⚛️ 0과 1 동시      (중첩 상태)
 ```
 
-### 이 과제에서의 큐비트
+### <img src="https://media.giphy.com/media/SvckSy7fFviqrq8ClF/giphy.gif" width="25"> 이 과제에서의 큐비트
 
 이 과제에서 큐비트는 **실리콘(Si) 안에 심은 인(³¹P) 원자가 내놓는 전자 하나의 스핀(회전 방향)** 입니다.
 
@@ -49,7 +57,7 @@
 
 > ⚠️ 참고: "인 원자의 스핀"이 아니라, 인 원자가 실리콘 격자에 들어가면서 내놓는 **전자의 스핀**이 큐비트입니다.
 
-### 그런데, 큐비트 하나로는 쓸모가 없습니다
+### <img src="https://media.giphy.com/media/l0HlQXlQ3nHyLMvte/giphy.gif" width="25"> 그런데, 큐비트 하나로는 쓸모가 없습니다
 
 양자컴퓨터가 되려면 큐비트가 **수백~수천 개** 필요합니다. 그것도 격자처럼 **가지런히 배열**돼야 합니다.
 
@@ -70,9 +78,11 @@
 
 ---
 
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
+
 ## 1. 💥 왜 어려운가
 
-### "다트 던지기" 비유
+### <img src="https://media.giphy.com/media/3o7aD2d7hy9ktXNDP2/giphy.gif" width="25"> "다트 던지기" 비유
 
 실리콘 안에 인(P) 원자를 심는 걸 **"이온 주입"** 이라 합니다. 이걸 비유하면 **어두운 방에서 다트를 던지는 것**과 같습니다.
 
@@ -131,9 +141,11 @@
 
 ---
 
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
+
 ## 2. 🧱 BQB 핵심 아이디어
 
-### BQB = 과녁판을 미리 만들어 두는 것
+### <img src="https://media.giphy.com/media/cj87CxfRtrUifF3Ber/giphy.gif" width="25"> BQB = 과녁판을 미리 만들어 두는 것
 
 **BQB** = **B**uried **Q**uantum **B**arrier = **"매립된 양자 장벽"**
 
@@ -166,9 +178,11 @@
 
 ---
 
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
+
 ## 3. 📐 공정창(Process Window)
 
-### 공정창 = 허용 오차의 규격서
+### <img src="https://media.giphy.com/media/l0HlTy9x8FZo0XO1i/giphy.gif" width="25"> 공정창 = 허용 오차의 규격서
 
 BQB의 진짜 힘은 **"공정창(Process Window)"** 이라는 개념입니다.
 
@@ -223,6 +237,8 @@ graph LR
 
 ---
 
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
+
 ## 4. 🛡️ Triple-Wall 3중 보호벽
 
 BQB는 각 큐비트를 **세 겹의 벽**으로 둘러쌉니다. 각 벽은 서로 다른 종류의 위협을 막습니다.
@@ -269,9 +285,11 @@ BQB는 각 큐비트를 **세 겹의 벽**으로 둘러쌉니다. 각 벽은 서
 
 ---
 
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
+
 ## 5. 🔄 폐루프 공정
 
-### 핵심 원칙
+### <img src="https://media.giphy.com/media/QssGEmpkyEOhBCb7e1/giphy.gif" width="25"> 핵심 원칙
 
 > 한 번에 완벽하게 만들 필요 없습니다.
 >
@@ -317,6 +335,8 @@ N회전:  ⚛️  ⚛️  ⚛️  ⚛️  ⚛️  → 공정창 안으로 수렴
 
 ---
 
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
+
 ## 6. 📋 전체 요약
 
 ```
@@ -343,6 +363,8 @@ N회전:  ⚛️  ⚛️  ⚛️  ⚛️  ⚛️  → 공정창 안으로 수렴
 
 ---
 
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
+
 ## 📚 용어 사전
 
 | 용어 | 뜻 | 비유 |
@@ -362,6 +384,8 @@ N회전:  ⚛️  ⚛️  ⚛️  ⚛️  ⚛️  → 공정창 안으로 수렴
 
 ---
 
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
+
 ## 🏗️ 프로젝트 정보
 
 | 항목 | 내용 |
@@ -376,7 +400,15 @@ N회전:  ⚛️  ⚛️  ⚛️  ⚛️  ⚛️  → 공정창 안으로 수렴
 
 ---
 
-<p align="center">
+<div align="center">
+
+<img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=6,11,20&height=100&section=footer&animation=twinkling" width="100%">
+
   <i>이 문서는 BQB 기술의 개념 이해를 돕기 위해 작성되었습니다.</i><br/>
   <i>정확한 기술 사양은 제안서 원문을 참조하시기 바랍니다.</i>
-</p>
+
+<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=14&pause=1000&color=6C63FF&center=true&vCenter=true&width=435&lines=%E2%9A%9B%EF%B8%8F+Quantum+Computing+%7C+BQB+Technology" alt="Footer Typing SVG" />
+
+</div>
