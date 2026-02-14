@@ -46,29 +46,85 @@
 
 <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
 
-## 1. 📐 오차 예산 분해 체계
+### 🏗️ 전체 아키텍처 오버뷰
 
-### 1.1 전환 구조: N_phys → N_op → N_link
+```mermaid
+graph TB
+    subgraph FOUNDRY["Phase 1: 22nm FD-SOI 파운더리 (선공정)"]
+        direction LR
+        TW["🛡️ Triple-Wall QBQ<br/>STI + T3 + BQB-B"]
+        GATE["🔌 제어 게이트<br/>A/J/센서"]
+        DDIC_F["⚡ DD-IC 제작<br/>77K 동작 설계"]
+    end
+
+    subgraph POST["Phase 2: 후공정 (큐비트 생성)"]
+        direction LR
+        FIB["⚒️ FIB 이온 주입<br/>단일 31P 도너"]
+        ANNEAL["🔥 저열예산 활성화<br/>Flash/Laser/Spike"]
+        PASS["🧪 패시베이션<br/>ALD/수소"]
+    end
+
+    subgraph VERIFY["Phase 3: 검증/보정 (폐루프)"]
+        direction LR
+        CT["🔬 3D 단층촬영<br/>nano-CT/XRD-CT"]
+        MAP["📊 Die-Map<br/>전기/광학"]
+        CAL["🔧 보정 테이블<br/>갱신/재매핑"]
+    end
+
+    subgraph INTEG["Phase 4: 통합 (패키징)"]
+        direction LR
+        D77["🌡️ 77K 데크<br/>DD-IC 모듈"]
+        D4K["❄️ 4K 데크<br/>QPU 모듈"]
+        SI["📡 SI 검증<br/>300K→4K"]
+    end
+
+    FOUNDRY --> POST
+    POST --> VERIFY
+    VERIFY -->|"폐루프"| POST
+    VERIFY --> INTEG
+
+    style FOUNDRY fill:#1a2235,stroke:#39d9f0,color:#e6edf3
+    style POST fill:#1a2235,stroke:#3fb950,color:#e6edf3
+    style VERIFY fill:#1a2235,stroke:#f0883e,color:#e6edf3
+    style INTEG fill:#1a2235,stroke:#bc8cff,color:#e6edf3
+```
+
+<img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
+
+## 1. 📐 오차 예산 분해 체계: N_phys → N_op → N_link
 
 대규모 배열 확장의 실질적 병목은 물리적 사이트 수(N_phys)가 아니라, 이를 운용 가능(N_op)하고 얽힘 연결(N_link)할 수 있는 **전환율**이다.
 
-```
-N_phys (물리적 배열)
-  │
-  ├─ 손실 원인: 위치 오차, 비활성, 채널링 tail
-  │   → BQB 템플릿 self-alignment으로 억제
-  │
-  ▼
-N_op (운용 가능)
-  │
-  ├─ 손실 원인: outlier, 전하 불안정, T2 미달
-  │   → Triple-Wall QBQ + 폐루프 보정으로 억제
-  │
-  ▼
-N_link (연결/얽힘)
-  │
-  └─ 손실 원인: 제어 비동기, 커플링 불균일
-      → 77K DD-IC 동기 펄스 + 스큐 보정으로 억제
+```mermaid
+graph TD
+    NP["🔵 N_phys<br/>물리적 배열<br/>──────────<br/>이온 주입으로 물리적 사이트에<br/>도너가 배치된 수"]
+    L1["⚠️ 손실 원인<br/>위치 오차 · 비활성 · 채널링 tail"]
+    S1["🛡️ BQB 템플릿 self-alignment"]
+    NO["🟢 N_op<br/>운용 가능<br/>──────────<br/>전기적으로 동작 확인된<br/>큐비트 수 (outlier 제외)"]
+    L2["⚠️ 손실 원인<br/>outlier · 전하 불안정 · T2 미달"]
+    S2["🛡️ Triple-Wall QBQ + 폐루프 보정"]
+    NL["🟣 N_link<br/>연결/얽힘<br/>──────────<br/>인접 큐비트 간 얽힘이<br/>검증된 쌍의 수"]
+    L3["⚠️ 손실 원인<br/>제어 비동기 · 커플링 불균일"]
+    S3["🛡️ 77K DD-IC 동기 펄스 + 스큐 보정"]
+
+    NP -->|"전환율 ①"| NO
+    NO -->|"전환율 ②"| NL
+    NP -.-> L1
+    L1 -.->|"억제"| S1
+    NO -.-> L2
+    L2 -.->|"억제"| S2
+    NL -.-> L3
+    L3 -.->|"억제"| S3
+
+    style NP fill:#1a3a5f,stroke:#58a6ff,color:#e6edf3,stroke-width:2px
+    style NO fill:#0d2818,stroke:#3fb950,color:#e6edf3,stroke-width:2px
+    style NL fill:#2d1b4e,stroke:#bc8cff,color:#e6edf3,stroke-width:2px
+    style L1 fill:#3d1f1f,stroke:#f85149,color:#f0883e
+    style L2 fill:#3d1f1f,stroke:#f85149,color:#f0883e
+    style L3 fill:#3d1f1f,stroke:#f85149,color:#f0883e
+    style S1 fill:#1a2235,stroke:#39d9f0,color:#39d9f0
+    style S2 fill:#1a2235,stroke:#39d9f0,color:#39d9f0
+    style S3 fill:#1a2235,stroke:#39d9f0,color:#39d9f0
 ```
 
 ### 1.2 연차별 핵심 KPI 테이블
@@ -99,6 +155,30 @@ N_link (연결/얽힘)
 ## 2. 🛡️ Triple-Wall QBQ 설계 규칙
 
 ### 2.1 3중 벽 구조 및 PDK 매핑
+
+```mermaid
+graph TD
+    EXT["🌪️ 외부 간섭 벡터<br/>크로스토크 + 기판 커플링<br/>전계 침투 + 전하 잡음<br/>이온 산란 + 채널링"] --> W1
+
+    subgraph TW["Triple-Wall QBQ 격리 구조"]
+        direction TB
+        W1["🧱 Wall-1: STI 외곽 격리벽<br/>────────────────<br/>isolation moat (타일 경계)<br/>keep-out 구조<br/>🎯 크로스토크 차단"]
+        W2["⚡ Wall-2: T3 전기적 실드웰<br/>────────────────<br/>True Triple Well isolation<br/>quiet guard ring (V_SSQ)<br/>🎯 |∇E| · 1/f 잡음 저감"]
+        W3["🔧 Wall-3: BQB-B 매립 장벽<br/>────────────────<br/>확산 차단 + 깊이 창 정의<br/>implant window self-alignment<br/>🎯 채널링 tail 억제"]
+        Q["⚛️ 큐비트 (31P 도너)<br/>────────────────<br/>T2 ≥ 1s · F1q ≥ 0.999"]
+
+        W1 -->|"직렬 감쇠 ①"| W2
+        W2 -->|"직렬 감쇠 ②"| W3
+        W3 -->|"보호"| Q
+    end
+
+    style EXT fill:#3d1f1f,stroke:#f85149,color:#f0883e
+    style W1 fill:#0c2d48,stroke:#39d9f0,color:#e6edf3,stroke-width:2px
+    style W2 fill:#2d1b4e,stroke:#bc8cff,color:#e6edf3,stroke-width:2px
+    style W3 fill:#2d2000,stroke:#f0883e,color:#e6edf3,stroke-width:2px
+    style Q fill:#0d2818,stroke:#3fb950,color:#e6edf3,stroke-width:3px
+    style TW fill:#0d1117,stroke:#253352,color:#8b949e
+```
 
 <div align="center">
 
@@ -146,30 +226,58 @@ T3 실드웰 + guard ring
 큐비트 다이(≤4K) 근접에 배치하여 다채널 동기 펄스와 스큐/지터 보정을 제공하고,
 실온→저온 배선 fan-out과 열부하를 억제하는 것이 핵심 역할이다.
 
+```mermaid
+graph LR
+    subgraph DDIC["77K DD Pulse Generator IC (22nm FD-SOI)"]
+        direction LR
+
+        subgraph RF["RF 체인"]
+            direction TB
+            PLL["🔄 LO-PLL<br/>25-200 MHz"]
+            DCO["📡 DCO<br/>캐리어 생성"]
+            IQ["📻 I/Q Up-Conv<br/>π/π/2 버스트<br/>28-42 GHz"]
+            PLL --> DCO --> IQ
+        end
+
+        subgraph SEQ["시퀀서 체인"]
+            direction TB
+            EVT["📋 이벤트 시퀀서<br/>루프/분기"]
+            PAT["💾 패턴 메모리"]
+            DD["🎵 DD 라이브러리<br/>CPMG/XY"]
+            EVT --> PAT --> DD
+        end
+
+        subgraph CAL["보정/분배 체인"]
+            direction TB
+            TDC["⏱️ 온칩 TDC<br/>스큐 측정"]
+            DT["🔧 Delay-trim<br/>스큐 보정"]
+            BC["📢 Broadcast<br/>+ 선택<br/>트리거/주소"]
+            TDC --> DT --> BC
+        end
+
+        IQ --> DD
+        DD --> BC
+    end
+
+    BC -->|"O(√N) 스케일링"| QPU["⚛️ 큐비트 배열<br/>4K"]
+
+    style DDIC fill:#1a2235,stroke:#f0883e,color:#e6edf3
+    style RF fill:#2d2000,stroke:#f0883e40
+    style SEQ fill:#0c2d48,stroke:#39d9f040
+    style CAL fill:#0d2818,stroke:#3fb95040
+    style QPU fill:#2d1b4e,stroke:#bc8cff,color:#e6edf3,stroke-width:2px
 ```
-┌─────────────────────────────────────────────┐
-│  77K DD Pulse Generator IC (22nm FD-SOI)    │
-│                                             │
-│  ┌──────────┐  ┌──────────┐  ┌───────────┐ │
-│  │ LO-PLL   │→│ DCO      │→│ I/Q       │ │
-│  │ 기준 클럭 │  │ 캐리어    │  │ Up-Conv   │ │
-│  │ 25-200MHz│  │ 생성      │  │ π/π/2     │ │
-│  └──────────┘  └──────────┘  └─────┬─────┘ │
-│                                    │       │
-│  ┌──────────┐  ┌──────────┐  ┌─────▼─────┐ │
-│  │ 이벤트    │→│ 패턴     │→│ DD 라이브  │ │
-│  │ 시퀀서    │  │ 메모리    │  │ 러리      │ │
-│  │ 루프/분기 │  │          │  │ CPMG/XY   │ │
-│  └──────────┘  └──────────┘  └─────┬─────┘ │
-│                                    │       │
-│  ┌──────────┐  ┌──────────┐  ┌─────▼─────┐ │
-│  │ 온칩 TDC │→│ Delay-   │→│ Broadcast │ │
-│  │ 스큐 측정 │  │ trim     │  │ + 선택    │ │
-│  │          │  │ 스큐 보정 │  │ 트리거/주소│ │
-│  └──────────┘  └──────────┘  └───────────┘ │
-│                   라인 수: O(√N) 스케일링     │
-└─────────────────────────────────────────────┘
-```
+
+<div align="center">
+
+| 핵심 스펙 | 값 |
+|:---:|:---:|
+| 🌡️ 동작 온도 | **77 K** |
+| 📡 출력 채널 | **≥128 ch** (공통 목표) |
+| ⏱️ 스큐 보정 | **≤5 ps** RMS (5차) |
+| ⚡ 전력 예산 | **≤0.8 W**/chip |
+
+</div>
 
 ### 3.2 핵심 스펙 (연차별)
 
@@ -213,57 +321,45 @@ TDM: 스위칭 ≤1 μs
 
 크라이오스탯의 서로 다른 스테이지(1st stage: 50-80K, 2nd stage: 4K)에 각각 열적으로 고정된 두 개의 온도 노드를 지그 구조로 만들어 유지한다.
 
-```
-┌─────────────────────────────┐
-│     A Large Cold Plate      │
-├─────────────────────────────┤
-│  1st Stage (50-80K)         │
-│  ┌────────────────────┐     │
-│  │   77K Deck          │ ← Heat Extraction to 1st Stage
-│  │   DD-IC Module      │     │
-│  │   Heat Spreader     │     │
-│  │   ≤0.8W/chip        │     │
-│  └────────────────────┘     │
-│           │                  │
-│   Cryo-Flex Cable Bundle    │
-│   Thermally Isolating Frame │
-│   (G10, ≤0.3 W/m·K)        │
-│           │                  │
-│  2nd Stage (4K)             │
-│  ┌────────────────────┐     │
-│  │   4K Deck           │ ← Heat Extraction to 4K Cold Plate
-│  │   QPU Module        │     │
-│  │   OFHC Cu Base      │     │
-│  │   Temp Sensor + PID │     │
-│  └────────────────────┘     │
-└─────────────────────────────┘
-```
+```mermaid
+graph TB
+    subgraph CRYO["🧊 크라이오스탯"]
+        direction TB
+        
+        subgraph D77["77K 데크 (1st Stage: 50-80K)"]
+            direction LR
+            DDIC["⚡ DD-IC 모듈<br/>≤0.8W/chip"]
+            HS["🌡️ 히트스프레더<br/>+ 열스트랩"]
+            CTRL["🎛️ 온도센서<br/>+ 히터"]
+            DDIC --- HS
+            HS --- CTRL
+        end
 
-### 4.2 설계 원칙
+        LINK["🔗 77K ↔ 4K 연결<br/>──────────────<br/>G10/GFRP 스페이서 (≤0.3 W/m·K)<br/>Cryo-flex cable + 열앵커<br/>NbTi 동축 (열전도 최소화)<br/>지지 길이 ≥20mm"]
 
-```
-핵심 등식:
-  라인 수 ↓  →  케이블 전도열 ↓  →  4K 유지 용이
-  broadcast + 선택 구동  →  라인 O(√N)
-  → 열부하와 배선 병목을 동시에 해결
+        subgraph D4K["4K 데크 (2nd Stage: 4K)"]
+            direction LR
+            CU["❄️ OFHC Cu<br/>베이스플레이트"]
+            QPU["⚛️ QPU<br/>칩/인터포저/보드"]
+            PID["🎛️ PID 히터<br/>mK 변동 억제"]
+            CU --- QPU
+            QPU --- PID
+        end
 
-77K 데크:
-  • DD-IC/보드를 1st stage에 열적으로 강하게 체결
-  • 온도센서 + 히터로 77K 세트포인트 유지
-  • 히트스프레더/볼트/열스트랩으로 발열을 1st stage로 방출
+        D77 --> LINK
+        LINK --> D4K
+    end
 
-4K 데크:
-  • OFHC Cu 베이스플레이트 → 4K 콜드플레이트 볼트 체결
-  • QPU(칩/인터포저/보드) 장착
-  • PID 히터(선택)로 수십~수백 mK 변동 억제
+    KEY["💡 핵심 등식<br/>라인 수↓ → 케이블 전도열↓ → 4K 유지 용이<br/>broadcast + 선택 → O(√N) 스케일링"]
 
-77K↔4K 연결:
-  • 배선: 77K와 4K에서 각각 열앵커(heat intercept)
-  • 기구: G10/GFRP 스페이서 (지지 길이 ≥20mm)
-  • 케이블: NbTi 동축, 열전도 최소화
+    style CRYO fill:#0a0c14,stroke:#253352,color:#8b949e
+    style D77 fill:#2d2000,stroke:#f0883e,color:#e6edf3,stroke-width:2px
+    style D4K fill:#0c2d48,stroke:#39d9f0,color:#e6edf3,stroke-width:2px
+    style LINK fill:#1a2235,stroke:#bc8cff,color:#e6edf3
+    style KEY fill:#0d2818,stroke:#3fb950,color:#3fb950
 ```
 
-### 4.3 신호 무결성(SI) 스펙
+### 4.2 신호 무결성(SI) 스펙
 
 <div align="center">
 
@@ -299,17 +395,33 @@ die-map 재매핑으로 outlier 사이트를 스페어로 대체 시
 실효 어레이 수율 추가 상승 → 목표 ≥70% (5차)
 ```
 
+**수율 시각화 (16×16 = 256 사이트):**
+
+| 사이트 수율 | 어레이 수율 | 시각화 |
+|:---:|:---:|:---|
+| 99.0% | **7.6%** | 🟥🟥🟥🟥⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ |
+| 99.5% | **27.7%** | 🟧🟧🟧🟧🟧🟧⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ |
+| 99.9% | **77.4%** | 🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜ |
+| + die-map | **≥70%** 🎯 | 🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦🟦⬜⬜⬜⬜⬜⬜ |
+
+> 💡 사이트 수율 0.5%p 개선이 어레이 수율 20%p 상승으로 연결 — 이것이 폐루프 수렴이 필수인 구조적 이유이다.
+
 ### 5.2 Generate → Verify → Correct
 
-<div align="center">
+```mermaid
+graph LR
+    G["⚒️ Generate<br/>──────────<br/>BQB 템플릿 기반<br/>3D 좌표에 큐비트 생성<br/>──────────<br/>FIB 단일 이온 주입<br/>저열예산 활성화<br/>ALD/수소 패시베이션"]
+    V["🔬 Verify<br/>──────────<br/>3D 단층촬영 +<br/>전기/광학 맵 검증<br/>──────────<br/>nano-CT · XRD-CT<br/>SIMS/TEM<br/>77K-4K 전기 맵"]
+    C["🔧 Correct<br/>──────────<br/>공정 레시피 및<br/>DD-IC 캘리브 보정<br/>──────────<br/>보정 테이블 갱신<br/>split-lot 최적화<br/>die-map 재매핑"]
 
-| 단계 | 수행 내용 | 핵심 장비/방법 |
-|------|---------|-------------|
-| **Generate** | BQB 템플릿 기반 3D 좌표에 큐비트 생성 | FIB 단일 이온 주입, 저열예산 활성화, ALD/수소 패시베이션 |
-| **Verify** | 3D 단층촬영 + 전기/광학 맵으로 검증 | nano-CT, XRD-CT, SIMS/TEM, 77K-4K 전기 맵 |
-| **Correct** | 공정 레시피 및 DD-IC 캘리브레이션 보정 | 보정 테이블 갱신, split-lot 최적화, die-map 재매핑 |
+    G -->|"생성 결과"| V
+    V -->|"편차 분석"| C
+    C -->|"파라미터 갱신"| G
 
-</div>
+    style G fill:#0c2d48,stroke:#39d9f0,color:#e6edf3,stroke-width:2px
+    style V fill:#0d2818,stroke:#3fb950,color:#e6edf3,stroke-width:2px
+    style C fill:#2d2000,stroke:#f0883e,color:#e6edf3,stroke-width:2px
+```
 
 ### 5.3 보정 항목 매핑
 
@@ -335,6 +447,38 @@ DD-IC 보정   ← 스큐/지터/펄스 계측           → TDC/Delay-trim, PLL
 <img src="https://user-images.githubusercontent.com/74038190/212284115-f47cd8ff-2ffb-4b04-b5bf-4d1c14c0247f.gif" width="100%">
 
 ## 6. 📊 연차별 KPI 진화 매트릭스
+
+### TRL 진행 로드맵
+
+```mermaid
+graph LR
+    Y1["1차<br/>'26.04~'26.12<br/>──────────<br/>플랫폼 확정<br/>기준선 확보"]
+    Y2["2차<br/>'27.01~'27.12<br/>──────────<br/>자가정렬 정밀화<br/>동일성 저감"]
+    Y3["3차<br/>'28.01~'28.12<br/>──────────<br/>2-qubit 연결<br/>패키징 PoC"]
+    Y4["4차<br/>'29.01~'29.12<br/>──────────<br/>256-class 확장<br/>3D 패키징 고도화"]
+    Y5["5차<br/>'30.01~'30.12<br/>──────────<br/>TRL5 통합 시연<br/>규격 동결"]
+
+    Y1 -->|"TRL 3→3+"| Y2
+    Y2 -->|"TRL 3+→4"| Y3
+    Y3 -->|"TRL 4"| Y4
+    Y4 -->|"TRL 4→5-"| Y5
+
+    style Y1 fill:#1a2235,stroke:#8b949e,color:#8b949e,stroke-width:2px
+    style Y2 fill:#0c2d48,stroke:#39d9f0,color:#e6edf3,stroke-width:2px
+    style Y3 fill:#0d2818,stroke:#3fb950,color:#e6edf3,stroke-width:2px
+    style Y4 fill:#2d2000,stroke:#f0883e,color:#e6edf3,stroke-width:2px
+    style Y5 fill:#1a3a5f,stroke:#58a6ff,color:#e6edf3,stroke-width:3px
+```
+
+**TRL 진행도:**
+
+| 연차 | TRL | 진행도 |
+|:---:|:---:|:---|
+| 1차 | 3→3+ | ⬛⬛⬜⬜⬜⬜⬜⬜⬜⬜ `20%` |
+| 2차 | 3+→4 | ⬛⬛⬛⬛⬜⬜⬜⬜⬜⬜ `40%` |
+| 3차 | 4 | ⬛⬛⬛⬛⬛⬛⬜⬜⬜⬜ `60%` |
+| 4차 | 4→5- | ⬛⬛⬛⬛⬛⬛⬛⬛⬜⬜ `80%` |
+| 5차 | 5 | ⬛⬛⬛⬛⬛⬛⬛⬛⬛⬛ `100%` 🎯 |
 
 ### 기본형 (31P 도너) 마일스톤
 
@@ -412,16 +556,16 @@ DD-IC: 256-class 동기 제어, 24h 자동 캘리브레이션
 
 ## 7. ⚠️ 위험관리 및 대응전략
 
-| 리스크 | 대응 전략 |
-|--------|---------|
-| **위치 정밀도 미달** | BQB 구조/열처리 창 재설계 + 다중 계측 교차검증으로 원인 분해 |
-| **동일성/스펙트럴 안정성 부족** | 전하트랩 저감(계면/패시베이션) 및 응력 관리 공정 도입 |
-| **T3 + Triple-Wall 셀 리스크** | test vehicle A/B 비교(단일벽 vs Triple Wall)로 Dit/잡음/드리프트 정량화, 공정창 항목으로 포함해 조기 수렴 |
-| **패키징 정렬 오차** | 얼라인 마크/공정 보정 루프 + X-ray 기반 정렬 피드백 |
-| **웨이퍼 본딩/적층 리스크** | 본딩 test vehicle 기반 공정창 설정, IR/X-ray/초음파 검사, 300K-77K 열사이클 신뢰성 평가 |
-| **77K DD-IC 성능/안정성** | PVT/온도 sweep 성적서 및 자동 보정 로그로 관리 |
-| **얽힘/연결 데모 지연** | 커플링 메커니즘(전기/광/공진기) 다중 옵션 병렬 추진 |
-| **예산/일정 변동** | 연차별 필수 산출물 최소 세트 정의 및 단계 게이팅(Gate) 운영 |
+| 심각도 | 리스크 | 대응 전략 |
+|:---:|--------|---------|
+| 🔴 | **위치 정밀도 미달** | BQB 구조/열처리 창 재설계 + 다중 계측 교차검증으로 원인 분해 |
+| 🔴 | **동일성/스펙트럴 안정성 부족** | 전하트랩 저감(계면/패시베이션) 및 응력 관리 공정 도입 |
+| 🟠 | **T3 + Triple-Wall 셀 리스크** | test vehicle A/B 비교(단일벽 vs Triple Wall)로 Dit/잡음/드리프트 정량화, 공정창 항목으로 포함해 조기 수렴 |
+| 🟠 | **패키징 정렬 오차** | 얼라인 마크/공정 보정 루프 + X-ray 기반 정렬 피드백 |
+| 🟡 | **웨이퍼 본딩/적층 리스크** | 본딩 test vehicle 기반 공정창 설정, IR/X-ray/초음파 검사, 300K-77K 열사이클 신뢰성 평가 |
+| 🟡 | **77K DD-IC 성능/안정성** | PVT/온도 sweep 성적서 및 자동 보정 로그로 관리 |
+| 🔵 | **얽힘/연결 데모 지연** | 커플링 메커니즘(전기/광/공진기) 다중 옵션 병렬 추진 |
+| ⚪ | **예산/일정 변동** | 연차별 필수 산출물 최소 세트 정의 및 단계 게이팅(Gate) 운영 |
 
 ---
 
