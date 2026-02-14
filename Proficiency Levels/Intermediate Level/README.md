@@ -3,17 +3,20 @@
 <!-- Quantum Wave Header -->
 <img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:030712,15:0a0e1a,35:1a1b4b,55:4f46e5,75:22d3ee,100:030712&amp;height=240&amp;section=header&amp;text=⚛️%20BQB%20중급%20가이드&amp;fontSize=44&amp;fontColor=e2e8f0&amp;animation=fadeIn&amp;fontAlignY=32&amp;desc=공정%20물리와%20설계%20원리%20|%20Process%20Physics%20%26%20Design%20Principles&amp;descSize=16&amp;descAlignY=55&amp;descAlign=50" width="100%">
 
-<!-- Animated Typing -->
-![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&pause=1000&color=22D3EE&center=true&vCenter=true&width=700&lines=이온+주입+산란+물리와+공정창+정량+규격;Triple-Wall+QBQ의+다층+격리+메커니즘;Generate→Verify→Correct+폐루프+수렴;22nm+FD-SOI+공정+분리형+통합+전략)
+<!-- Animated Topic Lines -->
+<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=32&amp;text=⚛️%20이온%20주입%20산란%20물리와%20공정창%20정량%20규격&amp;fontSize=16&amp;fontColor=22d3ee&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=32&amp;text=🛡️%20Triple-Wall%20QBQ의%20다층%20격리%20메커니즘&amp;fontSize=16&amp;fontColor=e879f9&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=32&amp;text=🔄%20Generate→Verify→Correct%20폐루프%20수렴&amp;fontSize=16&amp;fontColor=4ade80&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=32&amp;text=🏗️%2022nm%20FD-SOI%20공정%20분리형%20통합%20전략&amp;fontSize=16&amp;fontColor=fb923c&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
 
 <br/>
 
 <!-- Badges -->
-![Level](https://img.shields.io/badge/Level-Intermediate-6366f1?style=for-the-badge&logo=bookstack&logoColor=white)
-![Platform](https://img.shields.io/badge/22nm-FD--SOI-22d3ee?style=for-the-badge&logo=qualcomm&logoColor=white)
-![Qubit](https://img.shields.io/badge/28Si-31P_Donor_Spin-e879f9?style=for-the-badge&logo=atom&logoColor=white)
-![Array](https://img.shields.io/badge/Array-16×16_~_32×32-4ade80?style=for-the-badge&logo=grid&logoColor=white)
-![Control](https://img.shields.io/badge/77K-DD--IC-fb923c?style=for-the-badge&logo=chip&logoColor=white)
+<img src="https://img.shields.io/badge/Level-Intermediate-6366f1?style=for-the-badge&amp;logo=bookstack&amp;logoColor=white" alt="Level">
+<img src="https://img.shields.io/badge/22nm-FD--SOI-22d3ee?style=for-the-badge&amp;logo=qualcomm&amp;logoColor=white" alt="Platform">
+<img src="https://img.shields.io/badge/28Si-31P_Donor_Spin-e879f9?style=for-the-badge&amp;logo=atom&amp;logoColor=white" alt="Qubit">
+<img src="https://img.shields.io/badge/Array-16×16_~_32×32-4ade80?style=for-the-badge&amp;logo=grid&amp;logoColor=white" alt="Array">
+<img src="https://img.shields.io/badge/77K-DD--IC-fb923c?style=for-the-badge&amp;logo=chip&amp;logoColor=white" alt="Control">
 
 <br/>
 <img src="https://user-images.githubusercontent.com/74038190/213910845-af37a709-8995-40d6-be59-724571e17571.gif" width="60">
@@ -391,8 +394,8 @@ graph LR
 ```
 회전 1:  공정창 이탈률 ~40%  →  사이트 수율 ~60%   →  배열 수율 ≈ 0%
 회전 3:  공정창 이탈률 ~10%  →  사이트 수율 ~90%   →  배열 수율 < 1%
-회전 5:  공정창 이탈률 ~2%   →  사이트 수율 ~98%   →  배열 수율 ~ 1%
-회전 N:  공정창 이탈률 <0.5% →  사이트 수율 ≥99.5% →  배열 수율 ≥ 28%
+회전 5:  공정창 이탈률 ~2%   →  사이트 수율 ~98%   →  배열 수율 < 1%
+회전 N:  공정창 이탈률 <0.5% →  사이트 수율 ≥99.5% →  배열 수율 ≈ 28%
 ```
 
 > [!TIP]
@@ -540,7 +543,7 @@ graph TD
 | **STI** | Shallow Trench Isolation | SiO₂ 충전 트렌치로 인접 소자를 물리적 격리 |
 | **T3** | True Triple Well | deep n-well/p-well/n-well 3중 우물. 역바이어스 pn-junction으로 전기적 실드 |
 | **BQB-B** | Buried Quantum Barrier - Barrier | Si 내부 매립 장벽. 이온 침투 깊이 제한 + 개구로 횡방향 구속 |
-| **DD-IC** | Dynamic Decoupling Integrated Circuit | 77K에서 동작하는 큐비트 제어 펄스 생성 회로 |
+| **DD-IC** | DD(Dynamic Decoupling) Pulse Generator IC | 77K에서 동작하는 큐비트 제어 펄스 생성 회로 |
 | **FD-SOI** | Fully Depleted Silicon-On-Insulator | 22nm 급 상용 반도체 공정 플랫폼. BOX(매립 산화막) 위에 완전 공핍 채널 |
 | **Overlay** | 다층 리소그래피 간 정렬 오차 | 큐비트 좌표계 ↔ 배선/패키징 좌표계 간 누적 오차 |
 | **RTA** | Rapid Thermal Anneal | 초단시간 고온 처리. 도너 활성화를 하되 확산을 최소화 |
@@ -576,7 +579,10 @@ graph TD
 
 <br/>
 
-![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&size=14&pause=1000&color=6366F1&center=true&vCenter=true&width=600&lines=⚛️+Ion+Implantation+Physics+|+Process+Window;🛡️+Triple-Wall+QBQ+|+STI+%2B+T3+%2B+BQB-B;🔄+Closed-Loop+Convergence+|+Generate→Verify→Correct;🏗️+22nm+FD-SOI+|+Split-stage+Integration)
+<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=24&amp;text=⚛️%20Ion%20Implantation%20Physics%20|%20Process%20Window&amp;fontSize=13&amp;fontColor=6366f1&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=24&amp;text=🛡️%20Triple-Wall%20QBQ%20|%20STI%20+%20T3%20+%20BQB-B&amp;fontSize=13&amp;fontColor=6366f1&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=24&amp;text=🔄%20Closed-Loop%20|%20Generate→Verify→Correct&amp;fontSize=13&amp;fontColor=6366f1&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=24&amp;text=🏗️%2022nm%20FD-SOI%20|%20Split-stage%20Integration&amp;fontSize=13&amp;fontColor=6366f1&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
 
 <br/>
 
@@ -585,7 +591,7 @@ graph TD
 
 <br/>
 
-![Level](https://img.shields.io/badge/Level-Intermediate-6366f1?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Verified-4ade80?style=flat-square)
+<img src="https://img.shields.io/badge/Level-Intermediate-6366f1?style=flat-square" alt="Level">
+<img src="https://img.shields.io/badge/Status-Verified-4ade80?style=flat-square" alt="Status">
 
 </div>
