@@ -5,7 +5,7 @@
 
 <!-- Animated Topic Lines -->
 <img src="https://capsule-render.vercel.app/api?type=transparent&height=30&text=📊%20배열%20수율의%20거듭제곱%20법칙%20%7C%20Yield%20Scaling%20Law&fontSize=14&fontColor=fb7185&animation=fadeIn&fontAlignY=60" width="100%">
-<img src="https://capsule-render.vercel.app/api?type=transparent&height=30&text=⚛️%20이온%20주입%20산란%20물리%20%7C%20Straggle%20%26%20Channeling&fontSize=14&fontColor=22d3ee&animation=fadeIn&fontAlignY=60" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=transparent&height=30&text=⚛️%20이온%20주입%20산란%20물리%20%7C%20Straggle%20and%20Channeling&fontSize=14&fontColor=22d3ee&animation=fadeIn&fontAlignY=60" width="100%">
 <img src="https://capsule-render.vercel.app/api?type=transparent&height=30&text=🎯%20공정창%20정량%20규격%20%7C%20Process%20Window%20Specification&fontSize=14&fontColor=fde047&animation=fadeIn&fontAlignY=60" width="100%">
 <img src="https://capsule-render.vercel.app/api?type=transparent&height=30&text=🛡️%20Triple-Wall%20다층%20격리%20%7C%20STI%20+%20T3%20+%20BQB-B&fontSize=14&fontColor=e879f9&animation=fadeIn&fontAlignY=60" width="100%">
 <img src="https://capsule-render.vercel.app/api?type=transparent&height=30&text=🔄%20폐루프%20수렴%20%7C%20Generate→Verify→Correct&fontSize=14&fontColor=4ade80&animation=fadeIn&fontAlignY=60" width="100%">
