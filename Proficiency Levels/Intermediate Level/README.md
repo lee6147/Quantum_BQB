@@ -1,7 +1,7 @@
 ﻿<div align="center">
 
 <!-- Quantum Wave Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:030712,15:0a0e1a,35:1a1b4b,55:4f46e5,75:22d3ee,100:030712&amp;height=240&amp;section=header&amp;text=⚛️%20BQB%20중급%20가이드&amp;fontSize=44&amp;fontColor=e2e8f0&amp;animation=fadeIn&amp;fontAlignY=32&amp;desc=공정%20물리와%20설계%20원리%20|%20Process%20Physics%20%26%20Design%20Principles&amp;descSize=16&amp;descAlignY=55&amp;descAlign=50" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:030712,15:0a0e1a,35:1a1b4b,55:4f46e5,75:22d3ee,100:030712&height=240&section=header&text=⚛️%20BQB%20중급%20가이드&fontSize=44&fontColor=e2e8f0&animation=fadeIn&fontAlignY=32&desc=공정%20물리와%20설계%20원리%20%7C%20Process%20Physics%20%26%20Design%20Principles&descSize=16&descAlignY=55&descAlign=50" width="100%">
 
 <!-- Animated Topic Lines -->
 <img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=32&amp;text=⚛️%20이온%20주입%20산란%20물리와%20공정창%20정량%20규격&amp;fontSize=16&amp;fontColor=22d3ee&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
