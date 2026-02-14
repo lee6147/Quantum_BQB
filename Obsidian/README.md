@@ -22,8 +22,6 @@
 5. 검색창에 **"HTML Reader"** 입력
 6. **설치(Install)** 클릭 후 **활성화(Enable)** 클릭
 
-![HTML Reader 플러그인](https://raw.githubusercontent.com/nuthrash/obsidian-html-plugin/main/images/screenshot.png)
-
 ---
 
 ### 2단계: HTML 파일을 옵시디언 Vault에 복사
