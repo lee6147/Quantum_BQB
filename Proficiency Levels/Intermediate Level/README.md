@@ -5,7 +5,7 @@
 
 <!-- Animated Topic Lines -->
 <img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=32&amp;text=⚛️%20이온%20주입%20산란%20물리와%20공정창%20정량%20규격&amp;fontSize=16&amp;fontColor=22d3ee&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
-<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=32&amp;text=🛡️%20Triple-Wall%20QBQ의%20다층%20격리%20메커니즘&amp;fontSize=16&amp;fontColor=e879f9&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=32&amp;text=🛡️%20Triple-Wall%20BQB의%20다층%20격리%20메커니즘&amp;fontSize=16&amp;fontColor=e879f9&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
 <img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=32&amp;text=🔄%20Generate→Verify→Correct%20폐루프%20수렴&amp;fontSize=16&amp;fontColor=4ade80&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
 <img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=32&amp;text=🏗️%2022nm%20FD-SOI%20공정%20분리형%20통합%20전략&amp;fontSize=16&amp;fontColor=fb923c&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
 
@@ -580,7 +580,7 @@ graph TD
 <br/>
 
 <img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=24&amp;text=⚛️%20Ion%20Implantation%20Physics%20|%20Process%20Window&amp;fontSize=13&amp;fontColor=6366f1&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
-<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=24&amp;text=🛡️%20Triple-Wall%20QBQ%20|%20STI%20+%20T3%20+%20BQB-B&amp;fontSize=13&amp;fontColor=6366f1&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=24&amp;text=🛡️%20Triple-Wall%20BQB%20|%20STI%20+%20T3%20+%20BQB-B&amp;fontSize=13&amp;fontColor=6366f1&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
 <img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=24&amp;text=🔄%20Closed-Loop%20|%20Generate→Verify→Correct&amp;fontSize=13&amp;fontColor=6366f1&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
 <img src="https://capsule-render.vercel.app/api?type=transparent&amp;height=24&amp;text=🏗️%2022nm%20FD-SOI%20|%20Split-stage%20Integration&amp;fontSize=13&amp;fontColor=6366f1&amp;animation=fadeIn&amp;fontAlignY=60" width="100%">
 
