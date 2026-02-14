@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- Quantum Wave Header -->
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:030712,15:0a0e1a,35:1a1b4b,55:4f46e5,75:22d3ee,100:030712&height=240&section=header&text=⚛️%20BQB%20중급%20가이드&fontSize=44&fontColor=e2e8f0&animation=fadeIn&fontAlignY=32&desc=공정%20물리와%20설계%20원리%20|%20Process%20Physics%20%26%20Design%20Principles&descSize=16&descAlignY=55&descAlign=50" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:030712,15:0a0e1a,35:1a1b4b,55:4f46e5,75:22d3ee,100:030712&amp;height=240&amp;section=header&amp;text=⚛️%20BQB%20중급%20가이드&amp;fontSize=44&amp;fontColor=e2e8f0&amp;animation=fadeIn&amp;fontAlignY=32&amp;desc=공정%20물리와%20설계%20원리%20|%20Process%20Physics%20%26%20Design%20Principles&amp;descSize=16&amp;descAlignY=55&amp;descAlign=50" width="100%">
 
 <!-- Animated Typing -->
 ![Typing SVG](https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=20&pause=1000&color=22D3EE&center=true&vCenter=true&width=700&lines=이온+주입+산란+물리와+공정창+정량+규격;Triple-Wall+QBQ의+다층+격리+메커니즘;Generate→Verify→Correct+폐루프+수렴;22nm+FD-SOI+공정+분리형+통합+전략)
@@ -572,7 +572,7 @@ graph TD
 
 <img src="https://user-images.githubusercontent.com/74038190/212284100-561aa473-3905-4a80-b561-0d28506553ee.gif" width="100%">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:030712,15:0a0e1a,35:1a1b4b,55:4f46e5,75:22d3ee,100:030712&height=120&section=footer&animation=twinkling" width="100%">
+<img src="https://capsule-render.vercel.app/api?type=waving&amp;color=0:030712,15:0a0e1a,35:1a1b4b,55:4f46e5,75:22d3ee,100:030712&amp;height=120&amp;section=footer&amp;animation=twinkling" width="100%">
 
 <br/>
 
